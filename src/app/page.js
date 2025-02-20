@@ -4,7 +4,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchTasks, deleteTask, addTask, updateTask } from "../redux/features/taskSlices";
 import { LoadScriptNext, GoogleMap, Marker } from "@react-google-maps/api";
 
-const googleMapsApiKey = "AIzaSyBCbgtusVNULF5GGWJ2JrfiDSpECAPzYEw";
+const api_key = process.env.NEXT_PUBLIC_GOOGLE_MAP_API_KEY
+const googleMapsApiKey = `${api_key}`;
 
 export default function Home() {
   const dispatch = useDispatch();
