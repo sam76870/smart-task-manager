@@ -6,12 +6,12 @@ const AUTH_TOKEN = process.env.AUTH_TOKEN;
 function authenticate(request) {
     const authHeader = request.headers.get("authorization");
 
-    if (!authHeader || authHeader !== `Bearer ${AUTH_TOKEN}`) {
-        return new Response(JSON.stringify({ error: "Unauthorized" }), {
-            status: 401,
-            headers: { "Content-Type": "application/json" },
-        });
-    }
+    // if (!authHeader || authHeader !== `Bearer ${AUTH_TOKEN}`) {
+    //     return new Response(JSON.stringify({ error: "Unauthorized" }), {
+    //         status: 401,
+    //         headers: { "Content-Type": "application/json" },
+    //     });
+    // }
 }
 
 // GET request - Fetch a task by ID

@@ -11,7 +11,8 @@ export const tasks = [
         title: "Prepare Presentation",
         description: "Create a presentation for the upcoming team meeting.",
         dueDate: "2025-02-12",
-        priorityLevel: "Medium"
+        priorityLevel: "Medium",
+        location:"Gurgaon"
     },
     {
         id: 3,
@@ -33,12 +34,12 @@ const AUTH_TOKEN = process.env.AUTH_TOKEN;
 export async function GET(request) {
     const authHeader = request.headers.get("Authorization");
 
-    if (!authHeader || authHeader !== `Bearer ${AUTH_TOKEN}`) {
-        return new Response(JSON.stringify({ error: "Unauthorized" }), {
-            status: 401,
-            headers: { "Content-Type": "application/json" },
-        });
-    }
+    // if (!authHeader || authHeader !== `Bearer ${AUTH_TOKEN}`) {
+    //     return new Response(JSON.stringify({ error: "Unauthorized" }), {
+    //         status: 401,
+    //         headers: { "Content-Type": "application/json" },
+    //     });
+    // }
 
     return new Response(JSON.stringify(tasks), {
         status: 200,
@@ -49,12 +50,12 @@ export async function GET(request) {
 export async function POST(request) {
     const authHeader = request.headers.get("Authorization");
 
-    if (!authHeader || authHeader !== `Bearer ${AUTH_TOKEN}`) {
-        return new Response(JSON.stringify({ error: "Unauthorized" }), {
-            status: 401,
-            headers: { "Content-Type": "application/json" },
-        });
-    }
+    // if (!authHeader || authHeader !== `Bearer ${AUTH_TOKEN}`) {
+    //     return new Response(JSON.stringify({ error: "Unauthorized" }), {
+    //         status: 401,
+    //         headers: { "Content-Type": "application/json" },
+    //     });
+    // }
 
     const task = await request.json();
     const newTask = {
@@ -62,7 +63,8 @@ export async function POST(request) {
         title: task.title,
         description: task.description,
         dueDate: task.dueDate,
-        priorityLevel: task.priorityLevel
+        priorityLevel: task.priorityLevel,
+        location: task.location
     };
     tasks.push(newTask);
 
